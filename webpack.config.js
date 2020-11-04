@@ -3,15 +3,24 @@ const path= require("path")
 
 
 module.exports = {
+    entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "build")
     },
+
+    resolve: {
+        modules: [
+            "node_module", "src"
+        ],
+        extensions: [".js", ".jsx", ".scss"]
+    },
+
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: "babel-loader"
+                use: ["babel-loader"]
             },
             {
                 test: /\.sc[a]ss$/,
