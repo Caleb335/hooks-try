@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --mode development --open",
+    "dev": "parcel src/index.html -p 3000 --open",
     "format": "prettier --write \"src/**/*.{js,jsx,css,html,scss}\""
   },
   "dependencies": {
@@ -14,17 +14,13 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^5.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^4.5.0",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "node-sass": "^5.0.0",
-    "prettier": "^2.1.2",
-    "sass-loader": "^10.0.5",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.4.0",
-    "webpack-dev-server": "^3.11.0"
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.2"
   },
   "repository": {
     "type": "git",
