@@ -29816,6 +29816,11 @@ exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"js/components/FormHook.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -29845,16 +29850,23 @@ var FormHook = function FormHook() {
     type: "text",
     value: name.firstName,
     onChange: function onChange(e) {
-      e.target.value;
+      setName({
+        firstName: e.target.value
+      });
     }
   }), _react.default.createElement("input", {
     type: "text",
     value: name.lastName,
     onChange: function onChange(e) {
-      e.target.value;
+      setName({
+        lastName: e.target.value
+      });
     }
-  })), _react.default.createElement("h3", null, name.firstName), _react.default.createElement("h3", null, name.lastName));
+  }), _react.default.createElement("h3", null, "Your first name is: ", name.firstName), _react.default.createElement("h3", null, "Your last name is: ", name.lastName)));
 };
+
+var _default = FormHook;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 

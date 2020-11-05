@@ -10,19 +10,26 @@ const FormHook = () => {
           type='text'
           value={name.firstName}
           onChange={e => {
-            e.target.value
+            // spread the name variable, so it copies all the name object,
+            // but then override it with the next argument which is "firstName"
+            setName({ ...name, firstName: e.target.value })
+            // useState doesn't automatically merge
+            // and update the object, this is the key diff between the setState() common to class components.
           }}
         />
         <input
           type='text'
           value={name.lastName}
           onChange={e => {
-            e.target.value
+            setName({ ...name, lastName: e.target.value })
           }}
         />
+
+        <h3>Your first name is: {name.firstName}</h3>
+        <h3>Your last name is: {name.lastName}</h3>
       </form>
-      <h3>{name.firstName}</h3>
-      <h3>{name.lastName}</h3>
     </div>
   )
 }
+
+export default FormHook
