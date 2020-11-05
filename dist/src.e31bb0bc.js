@@ -29813,6 +29813,48 @@ var Count = function Count() {
 
 var _default = Count;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"js/components/FormHook.js":[function(require,module,exports) {
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var FormHook = function FormHook() {
+  var _React$useState = _react.default.useState({
+    firstName: "",
+    lastName: ""
+  }),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      name = _React$useState2[0],
+      setName = _React$useState2[1];
+
+  return _react.default.createElement("div", null, _react.default.createElement("form", null, _react.default.createElement("input", {
+    type: "text",
+    value: name.firstName,
+    onChange: function onChange(e) {
+      e.target.value;
+    }
+  }), _react.default.createElement("input", {
+    type: "text",
+    value: name.lastName,
+    onChange: function onChange(e) {
+      e.target.value;
+    }
+  })), _react.default.createElement("h3", null, name.firstName), _react.default.createElement("h3", null, name.lastName));
+};
 },{"react":"../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
@@ -29825,15 +29867,19 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Count = _interopRequireDefault(require("./js/components/Count"));
 
+var _FormHook = _interopRequireDefault(require("./js/components/FormHook"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null));
+  return _react.default.createElement("div", {
+    className: "app__base"
+  }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/FormHook":"js/components/FormHook.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
