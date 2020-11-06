@@ -29823,6 +29823,8 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -29850,17 +29852,20 @@ var FormHook = function FormHook() {
     type: "text",
     value: name.firstName,
     onChange: function onChange(e) {
-      setName({
+      // spread the name variable, so it copies all the name object,
+      // but then override it with the next argument which is "firstName"
+      setName(_extends({}, name, {
         firstName: e.target.value
-      });
+      })); // useState doesn't automatically merge
+      // and update the object, this is the key diff between the setState() common to class components.
     }
   }), _react.default.createElement("input", {
     type: "text",
     value: name.lastName,
     onChange: function onChange(e) {
-      setName({
+      setName(_extends({}, name, {
         lastName: e.target.value
-      });
+      }));
     }
   }), _react.default.createElement("h3", null, "Your first name is: ", name.firstName), _react.default.createElement("h3", null, "Your last name is: ", name.lastName)));
 };
@@ -29931,7 +29936,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42167" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45979" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
