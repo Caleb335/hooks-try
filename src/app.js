@@ -1,5 +1,6 @@
 import React from "react"
 import Count from "./js/components/Count"
+import DocumentTitle from "./js/components/DocumentTitle"
 import FormHook from "./js/components/FormHook"
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
       <h1>Hello Hooks</h1>
       <Count />
       <FormHook />
+      <DocumentTitle />
     </div>
   )
 }
