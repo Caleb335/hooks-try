@@ -29919,6 +29919,64 @@ var FormHook = function FormHook() {
 
 var _default = FormHook;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"js/components/MouseCoord.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var TrackMouseCoord = function TrackMouseCoord() {
+  var _React$useState = _react.default.useState(0),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      x = _React$useState2[0],
+      setX = _React$useState2[1];
+
+  var _React$useState3 = _react.default.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      y = _React$useState4[0],
+      setY = _React$useState4[1];
+
+  var trackMouse = function trackMouse(e) {
+    setX(e.clientX);
+    setY(e.clientY);
+    console.log("mouse coordinate event handler");
+  };
+
+  _react.default.useEffect(function () {
+    // console.log to check if the effects is run 
+    // on every re-render of the component
+    console.log("mouse coordinates event listener");
+    window.addEventListener("mousemove", trackMouse); // to make the effect runonly once, 
+    // add an empty array as a second parameter to the useEffect
+  }, []);
+
+  return _react.default.createElement("div", {
+    style: {
+      marginTop: "5%"
+    }
+  }, _react.default.createElement("h3", null, "Mouse's cordinates are: x-axis: ", x, ", y-axis: ", y));
+};
+
+var _default = TrackMouseCoord;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
@@ -29935,17 +29993,19 @@ var _DocumentTitle = _interopRequireDefault(require("./js/components/DocumentTit
 
 var _FormHook = _interopRequireDefault(require("./js/components/FormHook"));
 
+var _MouseCoord = _interopRequireDefault(require("./js/components/MouseCoord"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return _react.default.createElement("div", {
     className: "app__base"
-  }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null), _react.default.createElement(_DocumentTitle.default, null));
+  }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null), _react.default.createElement(_DocumentTitle.default, null), _react.default.createElement(_MouseCoord.default, null));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js","./js/components/MouseCoord":"js/components/MouseCoord.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29985,7 +30045,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44213" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33791" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
