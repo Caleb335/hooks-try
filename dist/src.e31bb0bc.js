@@ -29961,11 +29961,17 @@ var TrackMouseCoord = function TrackMouseCoord() {
   };
 
   _react.default.useEffect(function () {
-    // console.log to check if the effects is run 
+    // console.log to check if the effects is run
     // on every re-render of the component
     console.log("mouse coordinates event listener");
-    window.addEventListener("mousemove", trackMouse); // to make the effect runonly once, 
+    window.addEventListener("mousemove", trackMouse); // to make the effect runonly once,
     // add an empty array as a second parameter to the useEffect
+
+    return function () {
+      //  useEffect with cleanup
+      console.log("component unmounted");
+      window.removeEventListener("mousemove", trackMouse);
+    };
   }, []);
 
   return _react.default.createElement("div", {
@@ -29977,7 +29983,54 @@ var TrackMouseCoord = function TrackMouseCoord() {
 
 var _default = TrackMouseCoord;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"js/components/ToggleComp.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _MouseCoord = _interopRequireDefault(require("./MouseCoord"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var ToggleComponent = function ToggleComponent(_ref) {
+  var top = _ref.top;
+
+  var _React$useState = _react.default.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      toggle = _React$useState2[0],
+      setToggler = _React$useState2[1];
+
+  return _react.default.createElement("div", {
+    style: {
+      marginTop: top
+    }
+  }, _react.default.createElement("button", {
+    onClick: function onClick() {
+      setToggler(!toggle);
+    }
+  }, "Toggle component"), toggle && _react.default.createElement(_MouseCoord.default, null));
+};
+
+var _default = ToggleComponent;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./MouseCoord":"js/components/MouseCoord.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29993,19 +30046,21 @@ var _DocumentTitle = _interopRequireDefault(require("./js/components/DocumentTit
 
 var _FormHook = _interopRequireDefault(require("./js/components/FormHook"));
 
-var _MouseCoord = _interopRequireDefault(require("./js/components/MouseCoord"));
+var _ToggleComp = _interopRequireDefault(require("./js/components/ToggleComp"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return _react.default.createElement("div", {
     className: "app__base"
-  }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null), _react.default.createElement(_DocumentTitle.default, null), _react.default.createElement(_MouseCoord.default, null));
+  }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null), _react.default.createElement(_DocumentTitle.default, null), _react.default.createElement(_ToggleComp.default, {
+    top: "4%"
+  }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js","./js/components/MouseCoord":"js/components/MouseCoord.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js","./js/components/ToggleComp":"js/components/ToggleComp.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

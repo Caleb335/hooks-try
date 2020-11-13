@@ -12,13 +12,19 @@ const TrackMouseCoord = () => {
   }
 
   React.useEffect(() => {
-      // console.log to check if the effects is run 
-      // on every re-render of the component
+    // console.log to check if the effects is run
+    // on every re-render of the component
     console.log("mouse coordinates event listener")
     window.addEventListener("mousemove", trackMouse)
 
-    // to make the effect runonly once, 
+    // to make the effect runonly once,
     // add an empty array as a second parameter to the useEffect
+
+    return () => {
+        //  useEffect with cleanup
+      console.log("component unmounted")
+      window.removeEventListener("mousemove", trackMouse)
+    }
   }, [])
 
   return (
@@ -29,6 +35,5 @@ const TrackMouseCoord = () => {
     </div>
   )
 }
-
 
 export default TrackMouseCoord

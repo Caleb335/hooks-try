@@ -2,7 +2,7 @@ import React from "react"
 import Count from "./js/components/Count"
 import DocumentTitle from "./js/components/DocumentTitle"
 import FormHook from "./js/components/FormHook"
-import TrackMouseCoord from "./js/components/MouseCoord"
+import ToggleComponent from "./js/components/ToggleComp"
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       <Count />
       <FormHook />
       <DocumentTitle />
-      <TrackMouseCoord />
+      <ToggleComponent top={"4%"} />
     </div>
   )
 }
