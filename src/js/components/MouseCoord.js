@@ -21,7 +21,7 @@ const TrackMouseCoord = () => {
     // add an empty array as a second parameter to the useEffect
 
     return () => {
-        //  useEffect with cleanup
+      //  useEffect with cleanup
       console.log("component unmounted")
       window.removeEventListener("mousemove", trackMouse)
     }

@@ -30025,7 +30025,7 @@ var ToggleComponent = function ToggleComponent(_ref) {
     onClick: function onClick() {
       setToggler(!toggle);
     }
-  }, "Toggle component"), toggle && _react.default.createElement(_MouseCoord.default, null));
+  }, "Toggle component"), _react.default.createElement("code", null, _react.default.createElement("pre", null, "let name = \"testing code\"")), toggle && _react.default.createElement(_MouseCoord.default, null));
 };
 
 var _default = ToggleComponent;

@@ -13,6 +13,9 @@ const ToggleComponent = ({ top }) => {
       >
         Toggle component
       </button>
+      <code>
+        <pre>let name = "testing code"</pre>
+      </code>
       {/* if true display the component */}
       {toggle && <TrackMouseCoord />}
     </div>
