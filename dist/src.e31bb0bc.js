@@ -30030,13 +30030,97 @@ var ToggleComponent = function ToggleComponent(_ref) {
 
 var _default = ToggleComponent;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./MouseCoord":"js/components/MouseCoord.js"}],"app.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./MouseCoord":"js/components/MouseCoord.js"}],"js/Context/CompD.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _app = require("../../app");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CompD = function CompD() {
+  var test = _react.default.useContext(_app.testContext);
+
+  var another = _react.default.useContext(_app.anotherContext);
+
+  return _react.default.createElement("div", null, _react.default.createElement("h3", null, "Afa omo! no be small thing o"), test, " ", another);
+};
+
+var _default = CompD;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../../app":"app.js"}],"js/Context/CompC.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _CompD = _interopRequireDefault(require("./CompD"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function CompC() {
+  return _react.default.createElement("div", null, _react.default.createElement(_CompD.default, null));
+}
+
+var _default = CompC;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./CompD":"js/Context/CompD.js"}],"js/Context/CompB.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _CompC = _interopRequireDefault(require("./CompC"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CompB = function CompB() {
+  return _react.default.createElement("div", null, _react.default.createElement(_CompC.default, null));
+};
+
+var _default = CompB;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./CompC":"js/Context/CompC.js"}],"js/Context/CompA.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _CompB = _interopRequireDefault(require("./CompB"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CompA = function CompA() {
+  return _react.default.createElement("div", null, _react.default.createElement(_CompB.default, null));
+};
+
+var _default = CompA;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./CompB":"js/Context/CompB.js"}],"app.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.anotherContext = exports.testContext = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -30048,19 +30132,33 @@ var _FormHook = _interopRequireDefault(require("./js/components/FormHook"));
 
 var _ToggleComp = _interopRequireDefault(require("./js/components/ToggleComp"));
 
+var _CompA = _interopRequireDefault(require("./js/Context/CompA"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var testContext = _react.default.createContext();
+
+exports.testContext = testContext;
+
+var anotherContext = _react.default.createContext();
+
+exports.anotherContext = anotherContext;
 
 var App = function App() {
   return _react.default.createElement("div", {
     className: "app__base"
   }, _react.default.createElement("h1", null, "Hello Hooks"), _react.default.createElement(_Count.default, null), _react.default.createElement(_FormHook.default, null), _react.default.createElement(_DocumentTitle.default, null), _react.default.createElement(_ToggleComp.default, {
     top: "4%"
-  }));
+  }), _react.default.createElement(testContext.Provider, {
+    value: "God take control please"
+  }, _react.default.createElement(anotherContext.Provider, {
+    value: "we beg of you"
+  }, _react.default.createElement(_CompA.default, null))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js","./js/components/ToggleComp":"js/components/ToggleComp.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./js/components/Count":"js/components/Count.js","./js/components/DocumentTitle":"js/components/DocumentTitle.js","./js/components/FormHook":"js/components/FormHook.js","./js/components/ToggleComp":"js/components/ToggleComp.js","./js/Context/CompA":"js/Context/CompA.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
